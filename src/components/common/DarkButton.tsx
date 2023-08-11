@@ -6,10 +6,11 @@ interface IDarkButton {
     className?: string,
     loading?: boolean,
     disabled?: boolean,
+    type?: React.ButtonHTMLAttributes<HTMLButtonElement>["type"]
 }
-function DarkButton({children, onClick, className, loading, disabled}:IDarkButton) {
+function DarkButton({children, onClick, className, loading, disabled, type}:IDarkButton) {
   return (
-    <button disabled={disabled || loading} className={`bg-[#623dff] p-3 rounded-lg text-white ${className} hover:opacity-90 disabled:opacity-75`} onClick={onClick}>
+    <button type={type} disabled={disabled || loading} className={`bg-[#623dff] p-3 rounded-lg text-white ${className} hover:opacity-90 disabled:opacity-75`} onClick={onClick}>
         {!loading && children}
         {loading && <img src={Loader} className='pointer-events-none w-5 m-auto'/>}
     </button>
