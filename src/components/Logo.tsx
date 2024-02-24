@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import LogoIcon from "../assets/square-logo.svg";
+import LogoIcon from "../assets/square-logo.svg?react";
 interface ILogo {
     logoClassName?: string, 
     textClassName?: string
@@ -7,7 +7,7 @@ interface ILogo {
 function Logo({logoClassName, textClassName}:ILogo) {
   return (
     <Link to="/" className="flex items-center justify-center">
-        <img className={`block ${logoClassName}`} src={LogoIcon} alt="logo-icon" />
+        <LogoIcon className={`${logoClassName}`} />
         <span className={`block font-semibold ${textClassName}`}>linkup</span>
     </Link>
   )

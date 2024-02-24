@@ -3,6 +3,7 @@ import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
 //import Unauthenticated from "./pages/Unauthenticated"
 //import Signup from "./components/Signup"
 import React, { Suspense } from "react"
+import Loader from "./components/common/Loader";
 const Login = React.lazy(() => import('./components/Login'));
 const Unauthenticated = React.lazy(() => import('./pages/Unauthenticated'));
 const Signup = React.lazy(() => import('./components/Signup'));
@@ -33,10 +34,10 @@ const router = createBrowserRouter([
 function App() {
   return (
     <Suspense
-             fallback={<div><p>Loading...</p></div>}
-        >
+        fallback={<Loader/>}
+    >
       <RouterProvider router={router}/>
-      </Suspense>
+    </Suspense>
   )
 }
 

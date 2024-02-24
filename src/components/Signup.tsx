@@ -17,8 +17,8 @@ function Signup() {
         <p className="font-extralight text-left">Let's get you started sharing your links!</p>
         </div>
         <TextInput startIcon={<GrMail/>} placeholder="e.g. me@frontenddev.com" type="text" label="Email address"/> 
-        <TextInput startIcon={<TiLockClosed className="text-xl"/>} placeholder="Atleast 8 characters" type="password" label="Password"/>
-        <TextInput startIcon={<TiLockClosed className="text-xl"/>} placeholder="Atleast 8 characters" type="password" label="Confirm password"/>
+        <TextInput startIcon={<TiLockClosed/>} placeholder="Atleast 8 characters" type="password" label="Password"/>
+        <TextInput startIcon={<TiLockClosed/>} placeholder="Atleast 8 characters" type="password" label="Confirm password"/>
         <DarkButton type="submit" className="w-full">
             Create new account
         </DarkButton>

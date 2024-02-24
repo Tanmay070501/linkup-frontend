@@ -17,7 +17,7 @@ function Login() {
         <p className="font-extralight text-left">Add your details below to get back into the app</p>
         </div>
         <TextInput startIcon={<GrMail/>} placeholder="e.g. me@frontenddev.com" type="text" label="Email address"/> 
-        <TextInput startIcon={<TiLockClosed className="text-xl"/>} placeholder="Enter your password" type="password" label="Password"/>
+        <TextInput startIcon={<TiLockClosed/>} placeholder="Enter your password" type="password" label="Password"/>
         <DarkButton type="submit" className="w-full">
           Login
         </DarkButton>
