@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react'
-import Loader from "../../assets/bars.svg"
+import Loader from './Loader'
 interface IDarkButton {
     children: ReactNode,
     onClick?: React.MouseEventHandler<HTMLButtonElement>,
@@ -12,7 +12,7 @@ function DarkButton({children, onClick, className, loading, disabled, type}:IDar
   return (
     <button type={type} disabled={disabled || loading} className={`bg-[#623dff] p-3 rounded-lg text-white ${className} hover:opacity-90 disabled:opacity-75`} onClick={onClick}>
         {!loading && children}
-        {loading && <img src={Loader} className='pointer-events-none w-5 m-auto'/>}
+        {loading && <Loader className='text-white'/>}
     </button>
   )
 }

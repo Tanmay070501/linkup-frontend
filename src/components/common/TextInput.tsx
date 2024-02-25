@@ -6,14 +6,15 @@ interface ITextInput {
     label?: string,
     error?: string,
     value?: React.InputHTMLAttributes<HTMLInputElement>["value"]
-    startIcon?: React.ReactElement
+    startIcon?: React.ReactNode,
+    onChange?: React.ChangeEventHandler<HTMLInputElement>
 }
-const TextInput = React.forwardRef(({type, placeholder, label: labelText, error, value, startIcon}: ITextInput, ref?: ForwardedRef<HTMLInputElement>) =>  {
+const TextInput = React.forwardRef(({type, placeholder, label: labelText, error, value, startIcon, onChange}: ITextInput, ref?: ForwardedRef<HTMLInputElement>) =>  {
   return (
     <div className="flex flex-col gap-2 w-full">
         <label className="text-xs font-light">{labelText}</label>
         <div className="w-full relative">
-          <input value={value} ref={ref} className={`w-full text-base border rounded-lg p-2 ${error ? "border-red-400": ''} placeholder:font-extralight placeholder:text-justify ${startIcon ? "pl-10" : ''}`}  type={type} placeholder={placeholder} />
+          <input value={value} ref={ref} className={`w-full text-base border rounded-lg p-2 ${error ? "border-red-400": ''} placeholder:font-extralight placeholder:text-justify ${startIcon ? "pl-10" : ''}`}  type={type} placeholder={placeholder} onChange={onChange} />
           {startIcon && <div className="h-full flex items-center justify-center absolute left-0 mx-3 top-1/2 -translate-y-1/2 py-2 [&>svg]:w-4 [&>svg]:h-4 " >
             {startIcon}
           </div>}
