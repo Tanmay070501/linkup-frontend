@@ -1,11 +1,11 @@
-import DarkButton from "./common/DarkButton";
+import DarkButton from "../components/common/DarkButton";
 import {GrMail} from "react-icons/gr";
 import  {TiLockClosed} from "react-icons/ti"
-import UnauthenticatedLayout from "./layouts/UnauthenticatedLayout";
-import { singleFieldType } from "./common/FormBuilder/@types";
-import { inputFieldType } from "./common/FormBuilder/constant";
-import FormBuilder from "./common/FormBuilder/FormBuilder";
-import HighlightLink from "./common/HighlightLink";
+import UnauthenticatedLayout from "../components/layouts/UnauthenticatedLayout";
+import { singleFieldType } from "../components/common/FormBuilder/@types";
+import { inputFieldType } from "../components/common/FormBuilder/constant";
+import FormBuilder from "../components/common/FormBuilder/FormBuilder";
+import HighlightLink from "../components/common/HighlightLink";
 import { useFormik } from "formik";
 
 interface LoginFormValues {

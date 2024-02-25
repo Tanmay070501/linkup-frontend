@@ -1,38 +1,36 @@
 import { Navigate, RouterProvider, createBrowserRouter } from "react-router-dom"
-//import Login from "./components/Login"
-//import Unauthenticated from "./pages/Unauthenticated"
-//import Signup from "./components/Signup"
 import React, { Suspense } from "react"
 import Loader from "./components/common/Loader";
 import { useAppSelector } from "./redux/hook";
-const Login = React.lazy(() => import('./components/Login'));
-const Unauthenticated = React.lazy(() => import('./pages/Unauthenticated'));
-const Signup = React.lazy(() => import('./components/Signup'));
+import { unauthenticatedRoutes } from "./routes";
+const Login = React.lazy(() => import('./pages/Login'));
+const UnauthenticatedPageLayout = React.lazy(() => import('./components/layouts/UnauthenticatedPageLayout'));
+const Signup = React.lazy(() => import('./pages/Signup'));
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Unauthenticated/>,
+    element: <UnauthenticatedPageLayout/>,
     children: [
       {
         path: "",
-        element: <Navigate to={"login"}/>
+        element: <Navigate to={unauthenticatedRoutes.LOGIN}/>
       },
       {
-        path: "login",
+        path: unauthenticatedRoutes.LOGIN,
         element: <Login/>
       },
       {
-        path: "signup",
+        path: unauthenticatedRoutes.SIGNUP,
         element: <Signup/>
       },
       {
         path: '*',
-        element: <Navigate to={"login"}/>
+        element: <Navigate to={unauthenticatedRoutes.LOGIN}/>
       }
     ]
   }
 ])
-function App() {
+function RouterApp() {
   const accessToken = useAppSelector((state) => state.authReducer.accessToken)
   console.log("accessToken", accessToken)
 
@@ -45,4 +43,4 @@ function App() {
   )
 }
 
-export default App
+export default RouterApp
