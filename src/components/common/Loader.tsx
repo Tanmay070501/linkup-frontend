@@ -1,7 +1,7 @@
 
 import LoaderSvg from "../../assets/bars.svg?react"
 interface LoaderProps {
-    className: string
+    className?: string
 }
 
 function Loader({className = ''}: LoaderProps) {

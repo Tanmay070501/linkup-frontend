@@ -11,10 +11,8 @@ const authSlice = createSlice({
             state.accessToken = action.payload.accessToken
         },
         logout(state) {
-            if(localStorage.getItem("reduxStore")){
-                localStorage.removeItem("reduxStore");
-            }
             state = {accessToken : ""};
+            return state
         }
     },
 });
