@@ -7,6 +7,10 @@ import { inputFieldType } from "../components/common/FormBuilder/constant";
 import FormBuilder from "../components/common/FormBuilder/FormBuilder";
 import HighlightLink from "../components/common/HighlightLink";
 import { useFormik } from "formik";
+import { AppDispatch } from "../redux/store";
+import { useAppDispatch } from "../redux/hook";
+import { login } from "../redux/auth/action";
+import { useState } from "react";
 
 interface LoginFormValues {
     email: string,
@@ -34,14 +38,16 @@ const loginFormConfig: Array<singleFieldType> = [
 
 function Login() {
 
+  const [loader, setLoader] = useState(false)
+  const dispatch: AppDispatch = useAppDispatch()
+
   const formik = useFormik<LoginFormValues>({
     initialValues:{
       email: '',
       password: '',
     },
     onSubmit: (values) => {
-      // Handle form submission here
-      console.log(values);
+      dispatch(login(values, setLoader))
     },
   });
 
@@ -59,7 +65,7 @@ function Login() {
         />
         {/* <TextInput startIcon={<GrMail/>} placeholder="e.g. me@frontenddev.com" type="text" label="Email address"/> 
         <TextInput startIcon={<TiLockClosed/>} placeholder="Enter your password" type="password" label="Password"/> */}
-        <DarkButton type="submit" className="w-full">
+        <DarkButton type="submit" className="w-full" loading={loader}>
           Login
         </DarkButton>
         <p className="font-extralight text-center">

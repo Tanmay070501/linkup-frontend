@@ -7,6 +7,10 @@ import { singleFieldType } from "../components/common/FormBuilder/@types";
 import { inputFieldType } from "../components/common/FormBuilder/constant";
 import FormBuilder from "../components/common/FormBuilder/FormBuilder";
 import { useFormik } from "formik";
+import { useAppDispatch } from "../redux/hook";
+import { AppDispatch } from "../redux/store";
+import { signup } from "../redux/auth/action";
+import { useState } from "react";
 
 const signupFormConfig: Array<singleFieldType> = [
   {
@@ -42,6 +46,10 @@ interface SignupFormValues {
 }
 
 function Signup() {
+
+    const dispatch:AppDispatch = useAppDispatch()
+    const [loader, setLoader]  = useState(false)
+
     const formik = useFormik<SignupFormValues>({
       initialValues:{
         email: '',
@@ -51,6 +59,7 @@ function Signup() {
       onSubmit: (values) => {
         // Handle form submission here
         console.log(values);
+        dispatch(signup(values, setLoader))
       },
     });
 
@@ -66,7 +75,7 @@ function Signup() {
             formConfig={signupFormConfig}
             formik={formik}
         />
-        <DarkButton type="submit" className="w-full">
+        <DarkButton type="submit" className="w-full" loading={loader}>
             Create new account
         </DarkButton>
         <p className="font-extralight text-center">
